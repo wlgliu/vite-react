@@ -1,14 +1,24 @@
 import { Button } from "antd";
-import { Tweet } from "react-twitter-widgets";
+import { useState } from "react";
 
 export default function Home() {
+  const [value, setValue] = useState(true)
 
   return (
     <div className=" w-screen h-screen">
         <div className=" container m-auto">
             <Button>Detail</Button>
 
-            <Tweet tweetId="1671298633872941056" />
+            <input id="myinput" onChange={() => setValue(!value)} checked={value} type="checkbox" />
+
+            <Button onClick={() => {
+              const input = document.getElementById('myinput') as HTMLInputElement
+              if (!input) return;
+
+              const is = input && input.value
+              console.log(is);
+              
+            }}>isEncode</Button>
         </div>
     </div>
   )
